@@ -1,0 +1,2175 @@
+<!-- Portfolio: Boules Hisham Mokhtar | Senior Flutter Engineer
+     GitHub: bolespolo4 | Auto-synced with GitHub API -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boules Hisham Mokhtar — Senior Flutter Engineer</title>
+  <meta name="description" content="Boules Hisham Mokhtar — Senior Flutter Engineer portfolio" />
+  <meta property="og:title" content="Boules Hisham Mokhtar" />
+  <meta property="og:description" content="Senior Flutter Engineer · Mobile Architecture Specialist" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://bolespolo4.github.io" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Boules Hisham Mokhtar — Senior Flutter Engineer" />
+  <meta name="twitter:description" content="Senior Flutter Engineer · Mobile Architecture Specialist" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0F172A;
+      --card: #1E293B;
+      --border: #334155;
+      --accent: #1A56DB;
+      --highlight: #3B82F6;
+      --text: #E2E8F0;
+      --muted: #94A3B8;
+      --success: #10B981;
+      --warning: #F59E0B;
+      --danger: #EF4444;
+      --purple: #8B5CF6;
+      --pink: #EC4899;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ===== SCROLL PROGRESS BAR ===== */
+    #scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--highlight));
+      z-index: 9999;
+      transition: width 0.1s linear;
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 64px;
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1rem, 5vw, 3rem);
+    }
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--highlight);
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    .nav-links {
+      display: flex;
+      gap: 0.25rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 0.4rem 0.75rem;
+      border-radius: 6px;
+      position: relative;
+      transition: color 0.2s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%; right: 50%;
+      height: 2px;
+      background: var(--highlight);
+      border-radius: 2px;
+      transition: left 0.2s, right 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--text);
+    }
+    .nav-links a:hover::after, .nav-links a.active::after {
+      left: 10%; right: 10%;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: rgba(15, 23, 42, 0.98);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 999;
+      padding: 1rem 0;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block;
+      padding: 0.75rem 2rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--text); }
+
+    /* ===== SECTIONS ===== */
+    section {
+      padding: 5rem clamp(1rem, 8vw, 6rem);
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--highlight);
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1rem;
+    }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 64px;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(26,86,219,0.18) 0%, transparent 70%),
+                  radial-gradient(ellipse 60% 40% at 80% 80%, rgba(59,130,246,0.1) 0%, transparent 60%);
+      animation: heroPulse 8s ease-in-out infinite alternate;
+    }
+    @keyframes heroPulse {
+      0% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+    #particles-canvas {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      text-align: center;
+      max-width: 800px;
+      padding: 2rem;
+    }
+    .hero-greeting {
+      font-size: 1rem;
+      color: var(--highlight);
+      font-weight: 500;
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeInUp 0.6s ease forwards 0.2s;
+    }
+    .hero-name {
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      opacity: 0;
+      animation: fadeInUp 0.6s ease forwards 0.4s;
+    }
+    .hero-name span { color: var(--highlight); }
+    .hero-title {
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      min-height: 2.5rem;
+      opacity: 0;
+      animation: fadeInUp 0.6s ease forwards 0.6s;
+    }
+    #typed-text {
+      color: var(--text);
+      font-weight: 600;
+    }
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.2em;
+      background: var(--highlight);
+      margin-left: 2px;
+      vertical-align: middle;
+      animation: blink 0.8s step-end infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+    .hero-badges {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeInUp 0.6s ease forwards 0.8s;
+    }
+    .hero-badge {
+      background: rgba(26,86,219,0.15);
+      border: 1px solid rgba(59,130,246,0.3);
+      color: var(--highlight);
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeInUp 0.6s ease forwards 1s;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: var(--highlight);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(26,86,219,0.4);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover {
+      border-color: var(--highlight);
+      color: var(--highlight);
+      transform: translateY(-2px);
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s ease-in-out infinite;
+      color: var(--muted);
+      font-size: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+    .scroll-arrow {
+      width: 20px;
+      height: 20px;
+      border-right: 2px solid var(--muted);
+      border-bottom: 2px solid var(--muted);
+      transform: rotate(45deg);
+    }
+
+    /* ===== ABOUT ===== */
+    #about { background: rgba(30,41,59,0.3); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .about-text p { color: var(--muted); margin-bottom: 1rem; line-height: 1.8; }
+    .about-text p:first-child { color: var(--text); font-size: 1.05rem; }
+    .about-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+    .about-info-item {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .about-info-item span:first-child { color: var(--highlight); min-width: 20px; }
+    .about-info-item a { color: var(--highlight); text-decoration: none; }
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .stat-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--highlight);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+
+    /* ===== EXPERIENCE ===== */
+    .timeline {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      padding-left: 2rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+    }
+    .timeline-dot {
+      position: absolute;
+      left: -2.5rem;
+      top: 0.25rem;
+      width: 14px;
+      height: 14px;
+      background: var(--accent);
+      border-radius: 50%;
+      border: 3px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+    .timeline-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+    .timeline-card:hover {
+      border-color: var(--accent);
+      transform: translateX(4px);
+    }
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .timeline-role {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .timeline-period {
+      font-size: 0.8rem;
+      color: var(--highlight);
+      background: rgba(26,86,219,0.15);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .timeline-company {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .timeline-location {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .timeline-highlights {
+      display: none;
+      list-style: none;
+      margin-top: 1rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+    }
+    .timeline-highlights.open { display: block; }
+    .timeline-highlights li {
+      position: relative;
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+    }
+    .timeline-highlights li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--highlight);
+    }
+    .timeline-toggle {
+      font-size: 0.8rem;
+      color: var(--highlight);
+      margin-top: 0.5rem;
+      display: inline-block;
+    }
+
+    /* ===== PROJECTS ===== */
+    #projects { background: rgba(30,41,59,0.3); }
+    .github-stats-bar {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .gh-stat {
+      text-align: center;
+    }
+    .gh-stat-value {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--highlight);
+    }
+    .gh-stat-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+    .projects-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .search-bar {
+      position: relative;
+    }
+    .search-bar input {
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1rem 0.75rem 2.75rem;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .search-bar input::placeholder { color: var(--muted); }
+    .search-bar input:focus { border-color: var(--highlight); }
+    .search-bar svg {
+      position: absolute;
+      left: 0.9rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+    }
+    .filter-tabs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .filter-tab {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+    .filter-tab:hover { border-color: var(--highlight); color: var(--highlight); }
+    .filter-tab.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+      box-shadow: 0 12px 40px rgba(26,86,219,0.2);
+    }
+    .project-card.featured::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--highlight));
+    }
+    .card-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.75rem;
+    }
+    .badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      letter-spacing: 0.3px;
+    }
+    .badge-featured { background: rgba(245,158,11,0.15); color: #F59E0B; border: 1px solid rgba(245,158,11,0.3); }
+    .badge-private { background: rgba(239,68,68,0.15); color: #EF4444; border: 1px solid rgba(239,68,68,0.3); }
+    .badge-open { background: rgba(16,185,129,0.15); color: #10B981; border: 1px solid rgba(16,185,129,0.3); }
+    .badge-flutter { background: rgba(26,86,219,0.15); color: #60A5FA; border: 1px solid rgba(59,130,246,0.3); }
+    .badge-dart { background: rgba(0,181,204,0.15); color: #22D3EE; border: 1px solid rgba(6,182,212,0.3); }
+    .badge-node { background: rgba(16,185,129,0.15); color: #34D399; border: 1px solid rgba(16,185,129,0.3); }
+    .card-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .card-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+      flex: 1;
+      margin-bottom: 1rem;
+    }
+    .card-lang-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .lang-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .project-card:hover .lang-dot {
+      transform: scale(1.4);
+      box-shadow: 0 0 6px currentColor;
+    }
+    .lang-name {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .lang-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+    .lang-tag {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.45rem;
+      background: rgba(51,65,85,0.7);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--muted);
+    }
+    .card-meta {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .card-meta span { display: flex; align-items: center; gap: 0.25rem; }
+    .card-topics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 1rem;
+    }
+    .topic-tag {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.5rem;
+      background: rgba(26,86,219,0.1);
+      border: 1px solid rgba(59,130,246,0.2);
+      border-radius: 999px;
+      color: var(--highlight);
+    }
+    .card-actions {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .btn-sm {
+      padding: 0.4rem 0.85rem;
+      font-size: 0.78rem;
+      border-radius: 6px;
+    }
+    .btn-updated {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: auto;
+      padding-top: 0.5rem;
+    }
+
+    /* Skeleton */
+    .skeleton {
+      background: linear-gradient(90deg, var(--card) 25%, rgba(51,65,85,0.5) 50%, var(--card) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: 8px;
+    }
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    .skeleton-card {
+      height: 240px;
+      border-radius: 12px;
+    }
+
+    /* ===== SKILLS ===== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .skill-group {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .skill-group-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--highlight);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .skill-chip {
+      background: rgba(51,65,85,0.6);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: all 0.2s;
+      cursor: default;
+    }
+    .skill-chip:hover {
+      border-color: var(--highlight);
+      color: var(--highlight);
+      background: rgba(26,86,219,0.1);
+      box-shadow: 0 0 12px rgba(59,130,246,0.2);
+    }
+
+    /* ===== ACHIEVEMENTS ===== */
+    #achievements { background: rgba(30,41,59,0.3); }
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .achievement-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .achievement-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--highlight);
+    }
+    .achievement-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--highlight);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .achievement-label {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .achievement-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    /* ===== CERTIFICATIONS ===== */
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .cert-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .cert-card:hover { border-color: var(--accent); transform: translateX(4px); }
+    .cert-icon { font-size: 2rem; flex-shrink: 0; }
+    .cert-name { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+    .cert-org { font-size: 0.8rem; color: var(--highlight); margin-top: 0.2rem; }
+
+    /* ===== GITHUB CHART ===== */
+    .lang-chart-container {
+      max-width: 500px;
+      margin: 2rem auto 0;
+    }
+
+    /* ===== CONTACT ===== */
+    #contact { background: rgba(30,41,59,0.3); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .contact-info h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .contact-info p { color: var(--muted); margin-bottom: 1.5rem; line-height: 1.7; }
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+      padding: 0.5rem;
+      border-radius: 6px;
+    }
+    .contact-link:hover { color: var(--highlight); }
+    .contact-link-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      transition: border-color 0.2s;
+    }
+    .contact-link:hover .contact-link-icon { border-color: var(--highlight); }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+      margin-bottom: 1rem;
+    }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: var(--muted); }
+    .contact-form input:focus,
+    .contact-form textarea:focus { border-color: var(--highlight); }
+    .contact-form textarea { min-height: 130px; resize: vertical; }
+    .contact-form button {
+      width: 100%;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: rgba(15,23,42,0.95);
+      border-top: 1px solid var(--border);
+      padding: 2rem clamp(1rem, 8vw, 6rem);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-copy { color: var(--muted); font-size: 0.85rem; }
+    .footer-copy span { color: var(--highlight); }
+    .footer-socials {
+      display: flex;
+      gap: 0.75rem;
+    }
+    .social-btn {
+      width: 38px;
+      height: 38px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: all 0.2s;
+    }
+    .social-btn:hover {
+      border-color: var(--highlight);
+      transform: translateY(-2px);
+    }
+
+    /* ===== BACK TO TOP ===== */
+    #back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 44px;
+      height: 44px;
+      background: var(--accent);
+      border: none;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      z-index: 500;
+      box-shadow: 0 4px 16px rgba(26,86,219,0.4);
+    }
+    #back-to-top.visible { display: flex; }
+    #back-to-top:hover { transform: translateY(-3px); background: var(--highlight); }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== ERROR STATE ===== */
+    .error-state {
+      text-align: center;
+      padding: 3rem;
+      color: var(--muted);
+    }
+    .error-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .empty-state {
+      text-align: center;
+      padding: 3rem;
+      color: var(--muted);
+      grid-column: 1 / -1;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      section { padding: 3.5rem 1.25rem; }
+      .github-stats-bar { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .hero-cta { gap: 0.75rem; }
+      .btn { padding: 0.65rem 1.25rem; font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Scroll Progress Bar -->
+<div id="scroll-progress"></div>
+
+<!-- Navbar -->
+<nav>
+  <div class="nav-logo">BH·Mokhtar</div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#hero" class="mobile-link">Home</a>
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#experience" class="mobile-link">Experience</a>
+  <a href="#projects" class="mobile-link">Projects</a>
+  <a href="#skills" class="mobile-link">Skills</a>
+  <a href="#achievements" class="mobile-link">Achievements</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <canvas id="particles-canvas"></canvas>
+  <div class="hero-content">
+    <p class="hero-greeting">👋 Hello, I'm</p>
+    <h1 class="hero-name">Boules <span>Hisham</span> Mokhtar</h1>
+    <div class="hero-title">
+      <span id="typed-text"></span><span class="cursor"></span>
+    </div>
+    <div class="hero-badges">
+      <span class="hero-badge">📍 Cairo, Egypt</span>
+      <span class="hero-badge">✈️ Open to Remote / Relocation</span>
+      <span class="hero-badge">5+ Years Experience</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="mailto:bolespolo4@gmail.com" class="btn btn-outline">Contact Me</a>
+      <a href="https://github.com/bolespolo4" target="_blank" rel="noopener" class="btn btn-outline">GitHub ↗</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="section-header fade-in">
+    <p class="section-label">About Me</p>
+    <h2 class="section-title">Passionate About Building</h2>
+    <p class="section-subtitle">Senior Flutter Engineer crafting production-grade mobile experiences</p>
+  </div>
+  <div class="about-grid">
+    <div class="about-text fade-in">
+      <p>Senior Flutter Engineer &amp; Mobile Architecture Specialist with <strong>5+ years</strong> of experience delivering production-grade, cross-platform mobile applications and full-stack systems for enterprise clients across Egypt and Saudi Arabia.</p>
+      <p>Led development of a <strong>multi-tenant loyalty platform</strong> serving 4 live brands on Android and iOS, architected Clean Architecture modular codebases, and built multi-flavor CI/CD pipelines via GitHub Actions.</p>
+      <p>Headed a <strong>mobile engineering team of 10+ engineers</strong>, launching 5+ major products on time while reducing production incidents by 40%. Expert in Flutter/Dart, Firebase, BLoC/Cubit, Dart 3 sealed classes, ObjectBox, Node.js/TypeScript, and Docker.</p>
+      <div class="about-info">
+        <div class="about-info-item">
+          <span>📧</span>
+          <span><a href="mailto:bolespolo4@gmail.com">bolespolo4@gmail.com</a></span>
+        </div>
+        <div class="about-info-item">
+          <span>📱</span>
+          <span>+20 120 069 1224</span>
+        </div>
+        <div class="about-info-item">
+          <span>📍</span>
+          <span>Cairo, Egypt (Open to Remote / Relocation)</span>
+        </div>
+        <div class="about-info-item">
+          <span>💼</span>
+          <span><a href="https://linkedin.com/in/bolespolo4" target="_blank" rel="noopener">linkedin.com/in/bolespolo4</a></span>
+        </div>
+        <div class="about-info-item">
+          <span>🐙</span>
+          <span><a href="https://github.com/bolespolo4" target="_blank" rel="noopener">github.com/bolespolo4</a></span>
+        </div>
+      </div>
+    </div>
+    <div class="about-stats fade-in">
+      <div class="stat-card">
+        <div class="stat-number">5+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">10+</div>
+        <div class="stat-label">Engineers Led</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">4</div>
+        <div class="stat-label">Live Brands (PAAS)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">40%</div>
+        <div class="stat-label">Fewer Production Incidents</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">70%</div>
+        <div class="stat-label">Dev Velocity Gain</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">5+</div>
+        <div class="stat-label">Major Product Launches</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EXPERIENCE ===== -->
+<section id="experience">
+  <div class="section-header fade-in">
+    <p class="section-label">Work Experience</p>
+    <h2 class="section-title">Professional Journey</h2>
+    <p class="section-subtitle">Click any position to expand highlights</p>
+  </div>
+  <div class="timeline fade-in">
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card" onclick="toggleHighlights(this)">
+        <div class="timeline-header">
+          <div class="timeline-role">Senior Software Engineer — Lead Flutter Developer</div>
+          <div class="timeline-period">Sep 2023 – Present</div>
+        </div>
+        <div class="timeline-company">🏢 Qara Digital Solution</div>
+        <div class="timeline-location">📍 Cairo, Egypt / Remote (KSA)</div>
+        <span class="timeline-toggle">▼ Show highlights</span>
+        <ul class="timeline-highlights">
+          <li>Lead architect of PAAS — multi-tenant loyalty/rewards platform (4 live brands: Vet Rewards, JCC, Rabeh, Walaa) on Android &amp; iOS</li>
+          <li>Designed feature-based modular Clean Architecture (data/domain/presentation layers)</li>
+          <li>Built version-controlled Remote Asset Configuration system (ObjectBox + Firebase RTDB)</li>
+          <li>Engineered type-safe ImageLoader using Dart 3 sealed classes</li>
+          <li>Architected multi-flavor CI/CD pipelines (GitHub Actions) for QC/Staging/Production</li>
+          <li>Full Firebase stack: Auth, Crashlytics, Analytics, FCM, RTDB, Performance</li>
+          <li>Built internal package monorepo: qara_widgets, qara_core, qara_auth, scanner</li>
+          <li>70% faster dev velocity · 30% faster load times · 35% higher user retention</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card" onclick="toggleHighlights(this)">
+        <div class="timeline-header">
+          <div class="timeline-role">Head of Mobile Development</div>
+          <div class="timeline-period">Mar 2022 – Sep 2023</div>
+        </div>
+        <div class="timeline-company">🏢 CorporateStack Solutions</div>
+        <div class="timeline-location">📍 Cairo, Egypt</div>
+        <span class="timeline-toggle">▼ Show highlights</span>
+        <ul class="timeline-highlights">
+          <li>Led 10+ engineer mobile team · 5+ major product launches on time</li>
+          <li>Reduced production incidents by 40% via Clean Architecture standards</li>
+          <li>Built React/TypeScript e-commerce platform (10,000+ monthly transactions)</li>
+          <li>Native payment gateways, wallet/points systems, WordPress &amp; Salla integrations</li>
+          <li>Mentorship Excellence Award winner</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card" onclick="toggleHighlights(this)">
+        <div class="timeline-header">
+          <div class="timeline-role">Full-Stack Developer</div>
+          <div class="timeline-period">Oct 2019 – Feb 2021</div>
+        </div>
+        <div class="timeline-company">🏢 Ergasti Digital</div>
+        <div class="timeline-location">📍 Cairo, Egypt</div>
+        <span class="timeline-toggle">▼ Show highlights</span>
+        <ul class="timeline-highlights">
+          <li>SaaS platform for 80+ enterprise clients (Django, Vue.js, React.js)</li>
+          <li>30% API response time reduction</li>
+          <li>35% mobile conversion improvement</li>
+          <li>40% organic traffic uplift via technical SEO</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+<section id="projects">
+  <div class="section-header fade-in">
+    <p class="section-label">My Work</p>
+    <h2 class="section-title">Projects &amp; Repositories</h2>
+    <p class="section-subtitle">Featured projects + auto-synced from GitHub in real time</p>
+  </div>
+
+  <!-- GitHub Stats Bar -->
+  <div class="github-stats-bar fade-in" id="gh-stats-bar">
+    <div class="gh-stat"><div class="gh-stat-value skeleton" style="height:2rem;width:60px;margin:0 auto 0.3rem;">&#8203;</div><div class="gh-stat-label">Public Repos</div></div>
+    <div class="gh-stat"><div class="gh-stat-value skeleton" style="height:2rem;width:60px;margin:0 auto 0.3rem;">&#8203;</div><div class="gh-stat-label">Total Stars</div></div>
+    <div class="gh-stat"><div class="gh-stat-value skeleton" style="height:2rem;width:60px;margin:0 auto 0.3rem;">&#8203;</div><div class="gh-stat-label">Total Forks</div></div>
+    <div class="gh-stat"><div class="gh-stat-value skeleton" style="height:2rem;width:80px;margin:0 auto 0.3rem;">&#8203;</div><div class="gh-stat-label">Top Language</div></div>
+  </div>
+
+  <!-- Controls -->
+  <div class="projects-controls fade-in">
+    <div class="search-bar">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+      </svg>
+      <input type="text" id="search-input" placeholder="Search repositories..." autocomplete="off" />
+    </div>
+    <div class="filter-tabs" id="filter-tabs">
+      <button class="filter-tab active" data-cat="All">All</button>
+      <button class="filter-tab" data-cat="📱 Flutter / Mobile">📱 Flutter</button>
+      <button class="filter-tab" data-cat="🌐 Web / Full-Stack">🌐 Web</button>
+      <button class="filter-tab" data-cat="🛠 Developer Tools">🛠 Tools</button>
+      <button class="filter-tab" data-cat="🤖 AI / Automation">🤖 AI</button>
+      <button class="filter-tab" data-cat="📦 Packages / Libraries">📦 Packages</button>
+      <button class="filter-tab" data-cat="🔧 Other">🔧 Other</button>
+    </div>
+  </div>
+
+  <!-- Projects Grid -->
+  <div class="projects-grid" id="projects-grid">
+    <!-- Skeleton loaders -->
+    <div class="skeleton skeleton-card"></div>
+    <div class="skeleton skeleton-card"></div>
+    <div class="skeleton skeleton-card"></div>
+    <div class="skeleton skeleton-card"></div>
+    <div class="skeleton skeleton-card"></div>
+    <div class="skeleton skeleton-card"></div>
+  </div>
+
+  <!-- Language Chart -->
+  <div class="lang-chart-container fade-in">
+    <canvas id="lang-chart"></canvas>
+  </div>
+</section>
+
+<!-- ===== SKILLS ===== -->
+<section id="skills">
+  <div class="section-header fade-in">
+    <p class="section-label">Expertise</p>
+    <h2 class="section-title">Skills &amp; Technologies</h2>
+    <p class="section-subtitle">Hover over any skill to highlight it</p>
+  </div>
+  <div class="skills-grid fade-in">
+    <div class="skill-group">
+      <div class="skill-group-title">📱 Mobile</div>
+      <div class="skill-chips">
+        <span class="skill-chip">Flutter 3.x</span>
+        <span class="skill-chip">Dart 3</span>
+        <span class="skill-chip">Kotlin</span>
+        <span class="skill-chip">Swift</span>
+        <span class="skill-chip">Android SDK</span>
+        <span class="skill-chip">iOS SDK</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">🧩 State Management</div>
+      <div class="skill-chips">
+        <span class="skill-chip">BLoC / Cubit</span>
+        <span class="skill-chip">HydratedBloc</span>
+        <span class="skill-chip">Riverpod</span>
+        <span class="skill-chip">Provider</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">🏗 Architecture</div>
+      <div class="skill-chips">
+        <span class="skill-chip">Clean Architecture</span>
+        <span class="skill-chip">SOLID Principles</span>
+        <span class="skill-chip">Repository Pattern</span>
+        <span class="skill-chip">Feature Modular</span>
+        <span class="skill-chip">Sealed Classes</span>
+        <span class="skill-chip">MVVM</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">🔥 Firebase</div>
+      <div class="skill-chips">
+        <span class="skill-chip">Auth</span>
+        <span class="skill-chip">Crashlytics</span>
+        <span class="skill-chip">Analytics</span>
+        <span class="skill-chip">FCM</span>
+        <span class="skill-chip">RTDB</span>
+        <span class="skill-chip">Firestore</span>
+        <span class="skill-chip">Performance</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">🗄 Data &amp; Network</div>
+      <div class="skill-chips">
+        <span class="skill-chip">ObjectBox</span>
+        <span class="skill-chip">Dio</span>
+        <span class="skill-chip">REST APIs</span>
+        <span class="skill-chip">JWT</span>
+        <span class="skill-chip">PostgreSQL</span>
+        <span class="skill-chip">MariaDB</span>
+        <span class="skill-chip">GraphQL</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">⚙️ DevOps &amp; CI/CD</div>
+      <div class="skill-chips">
+        <span class="skill-chip">GitHub Actions</span>
+        <span class="skill-chip">Fastlane</span>
+        <span class="skill-chip">Docker</span>
+        <span class="skill-chip">CapRover</span>
+        <span class="skill-chip">VPS</span>
+        <span class="skill-chip">CI/CD Pipelines</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">🛠 Build Tools</div>
+      <div class="skill-chips">
+        <span class="skill-chip">flutter_flavorizr</span>
+        <span class="skill-chip">Gradle</span>
+        <span class="skill-chip">CocoaPods</span>
+        <span class="skill-chip">build_runner</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">🌐 Full-Stack</div>
+      <div class="skill-chips">
+        <span class="skill-chip">Node.js</span>
+        <span class="skill-chip">TypeScript</span>
+        <span class="skill-chip">React</span>
+        <span class="skill-chip">Django</span>
+        <span class="skill-chip">Python</span>
+        <span class="skill-chip">Vue.js</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">✨ Other</div>
+      <div class="skill-chips">
+        <span class="skill-chip">LLM / MCP APIs</span>
+        <span class="skill-chip">QR Scanning</span>
+        <span class="skill-chip">Localization (ARB/RTL)</span>
+        <span class="skill-chip">Lottie</span>
+        <span class="skill-chip">AI Automation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ACHIEVEMENTS ===== -->
+<section id="achievements">
+  <div class="section-header fade-in">
+    <p class="section-label">Milestones</p>
+    <h2 class="section-title">Achievements &amp; Impact</h2>
+  </div>
+  <div class="achievements-grid fade-in">
+    <div class="achievement-card">
+      <div class="achievement-icon">🚀</div>
+      <div class="achievement-number" data-target="70">0</div>
+      <div class="achievement-label">% Development Velocity Improvement via AI/LLM Automation</div>
+    </div>
+    <div class="achievement-card">
+      <div class="achievement-icon">⚡</div>
+      <div class="achievement-number" data-target="30">0</div>
+      <div class="achievement-label">% Load Time Reduction Achieved</div>
+    </div>
+    <div class="achievement-card">
+      <div class="achievement-icon">🛡</div>
+      <div class="achievement-number" data-target="40">0</div>
+      <div class="achievement-label">% Reduction in Production Incidents</div>
+    </div>
+    <div class="achievement-card">
+      <div class="achievement-icon">💰</div>
+      <div class="achievement-number" data-target="25">0</div>
+      <div class="achievement-label">% Cloud Hosting Cost Reduction</div>
+    </div>
+    <div class="achievement-card">
+      <div class="achievement-icon">📈</div>
+      <div class="achievement-number" data-target="35">0</div>
+      <div class="achievement-label">% User Retention Uplift</div>
+    </div>
+    <div class="achievement-card">
+      <div class="achievement-icon">🏆</div>
+      <div class="achievement-number" style="font-size:2rem">Award</div>
+      <div class="achievement-label">Mentorship Excellence Award Winner</div>
+    </div>
+  </div>
+
+  <!-- Certifications -->
+  <div class="section-header fade-in" style="margin-top:4rem;">
+    <p class="section-label">Education</p>
+    <h2 class="section-title">Certifications</h2>
+  </div>
+  <div class="certs-grid fade-in">
+    <div class="cert-card">
+      <div class="cert-icon">🎓</div>
+      <div>
+        <div class="cert-name">CS50: Introduction to Computer Science</div>
+        <div class="cert-org">Harvard University</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🐍</div>
+      <div>
+        <div class="cert-name">CS50: Introduction to Programming with Python</div>
+        <div class="cert-org">Harvard University</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">📱</div>
+      <div>
+        <div class="cert-name">The Complete Flutter &amp; Dart Development Bootcamp</div>
+        <div class="cert-org">Udemy</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🦋</div>
+      <div>
+        <div class="cert-name">Flutter Apprentice</div>
+        <div class="cert-org">Google</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="section-header fade-in">
+    <p class="section-label">Get In Touch</p>
+    <h2 class="section-title">Let's Work Together</h2>
+    <p class="section-subtitle">Open to remote opportunities, senior roles, and exciting collaborations</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info fade-in">
+      <h3>Say Hello 👋</h3>
+      <p>I'm currently open to senior engineering roles, remote opportunities, and consulting engagements. Whether you have a project in mind or just want to connect — drop me a message!</p>
+      <div class="contact-links">
+        <a href="mailto:bolespolo4@gmail.com" class="contact-link">
+          <div class="contact-link-icon">📧</div>
+          <span>bolespolo4@gmail.com</span>
+        </a>
+        <a href="tel:+201200691224" class="contact-link">
+          <div class="contact-link-icon">📱</div>
+          <span>+20 120 069 1224</span>
+        </a>
+        <a href="https://linkedin.com/in/bolespolo4" target="_blank" rel="noopener" class="contact-link">
+          <div class="contact-link-icon">💼</div>
+          <span>linkedin.com/in/bolespolo4</span>
+        </a>
+        <a href="https://github.com/bolespolo4" target="_blank" rel="noopener" class="contact-link">
+          <div class="contact-link-icon">🐙</div>
+          <span>github.com/bolespolo4</span>
+        </a>
+        <a href="https://wa.me/201200691224" target="_blank" rel="noopener" class="contact-link">
+          <div class="contact-link-icon">💬</div>
+          <span>WhatsApp Chat</span>
+        </a>
+      </div>
+    </div>
+    <div class="contact-form fade-in">
+      <form id="contact-form" onsubmit="submitForm(event)">
+        <input type="text" id="form-name" placeholder="Your Name" required />
+        <input type="email" id="form-email" placeholder="Your Email" required />
+        <input type="text" id="form-subject" placeholder="Subject" required />
+        <textarea id="form-message" placeholder="Your Message..." required></textarea>
+        <button type="submit" class="btn btn-primary">Send Message ✉️</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-copy">
+    © <span id="year"></span> <span>Boules Hisham Mokhtar</span>. Built with ❤️ &amp; deployed on GitHub Pages.
+  </div>
+  <div class="footer-socials">
+    <a href="https://github.com/bolespolo4" target="_blank" rel="noopener" class="social-btn" title="GitHub">🐙</a>
+    <a href="https://linkedin.com/in/bolespolo4" target="_blank" rel="noopener" class="social-btn" title="LinkedIn">💼</a>
+    <a href="mailto:bolespolo4@gmail.com" class="social-btn" title="Email">📧</a>
+    <a href="tel:+201200691224" class="social-btn" title="Phone">📱</a>
+  </div>
+</footer>
+
+<!-- Back to Top -->
+<button id="back-to-top" title="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// ==========================================
+// CONSTANTS
+// ==========================================
+const GH_USER = 'bolespolo4';
+const API_BASE = 'https://api.github.com';
+const CACHE_KEY = 'gh_portfolio_cache';
+const CACHE_TTL = 3600000; // 1 hour
+
+// GitHub language colors (subset matching most common)
+const LANG_COLORS = {
+  'Dart': '#00B4D8', 'Flutter': '#54C5F8',
+  'JavaScript': '#F7DF1E', 'TypeScript': '#3178C6',
+  'Python': '#3572A5', 'Kotlin': '#A97BFF',
+  'Swift': '#F05138', 'Java': '#B07219',
+  'HTML': '#E34C26', 'CSS': '#563D7C',
+  'Shell': '#89E051', 'Ruby': '#CC342D',
+  'Go': '#00ADD8', 'Rust': '#DEA584',
+  'C++': '#F34B7D', 'C#': '#178600',
+  'C': '#555555', 'Vue': '#41B883',
+  'SCSS': '#C6538C', 'Makefile': '#427819',
+  'Dockerfile': '#384D54', 'CMake': '#DA3434',
+  'Objective-C': '#438EFF', 'Groovy': '#E69F56',
+  'Node.js': '#68A063', 'PHP': '#4F5D95',
+};
+function langColor(l) {
+  return LANG_COLORS[l] || '#94A3B8';
+}
+
+// ==========================================
+// SCROLL PROGRESS
+// ==========================================
+const progressBar = document.getElementById('scroll-progress');
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  progressBar.style.width = (scrollTop / docHeight * 100) + '%';
+
+  // Back to top
+  const btt = document.getElementById('back-to-top');
+  btt.classList.toggle('visible', scrollTop > 300);
+
+  // Active nav
+  updateActiveNav();
+});
+
+function updateActiveNav() {
+  const sections = ['hero','about','experience','projects','skills','achievements','contact'];
+  let current = 'hero';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && window.scrollY >= el.offsetTop - 100) current = id;
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+}
+
+// ==========================================
+// HAMBURGER MENU
+// ==========================================
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+document.querySelectorAll('.mobile-link').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  });
+});
+
+// ==========================================
+// TYPING EFFECT
+// ==========================================
+const titles = [
+  'Senior Flutter Engineer',
+  'Mobile Architecture Specialist',
+  'Clean Architecture Advocate',
+  'Full-Stack Developer',
+  'CI/CD Pipeline Builder',
+  'Team Lead · 10+ Engineers',
+];
+let titleIdx = 0, charIdx = 0, deleting = false;
+const typedEl = document.getElementById('typed-text');
+
+function type() {
+  const current = titles[titleIdx];
+  if (!deleting) {
+    typedEl.textContent = current.slice(0, charIdx + 1);
+    charIdx++;
+    if (charIdx === current.length) {
+      deleting = true;
+      setTimeout(type, 2000);
+      return;
+    }
+  } else {
+    typedEl.textContent = current.slice(0, charIdx - 1);
+    charIdx--;
+    if (charIdx === 0) {
+      deleting = false;
+      titleIdx = (titleIdx + 1) % titles.length;
+    }
+  }
+  setTimeout(type, deleting ? 50 : 80);
+}
+setTimeout(type, 1500);
+
+// ==========================================
+// PARTICLES
+// ==========================================
+(function() {
+  const canvas = document.getElementById('particles-canvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  function resize() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  for (let i = 0; i < 60; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.5 + 0.5,
+      dx: (Math.random() - 0.5) * 0.3,
+      dy: (Math.random() - 0.5) * 0.3,
+      o: Math.random() * 0.4 + 0.1,
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(59,130,246,${p.o})`;
+      ctx.fill();
+      p.x += p.dx; p.y += p.dy;
+      if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+    });
+    // Draw connecting lines
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 100) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(59,130,246,${0.08 * (1 - dist/100)})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// ==========================================
+// INTERSECTION OBSERVER (fade-in)
+// ==========================================
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      // Trigger count-up for achievements
+      const nums = e.target.querySelectorAll('.achievement-number[data-target]');
+      nums.forEach(n => countUp(n));
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// ==========================================
+// COUNT-UP ANIMATION
+// ==========================================
+function countUp(el) {
+  if (el.dataset.counted) return;
+  el.dataset.counted = '1';
+  const target = parseInt(el.dataset.target, 10);
+  if (isNaN(target)) return; // skip non-numeric targets (e.g. "Award")
+  const suffix = el.dataset.suffix || '%';
+  let count = 0;
+  const frames = 60; // fixed frame count for consistent animation speed
+  const step = Math.max(1, Math.ceil(target / frames));
+  const timer = setInterval(() => {
+    count = Math.min(count + step, target);
+    el.textContent = count + suffix;
+    if (count >= target) clearInterval(timer);
+  }, 16);
+}
+
+// ==========================================
+// EXPERIENCE TIMELINE TOGGLE
+// ==========================================
+function toggleHighlights(card) {
+  const hl = card.querySelector('.timeline-highlights');
+  const toggle = card.querySelector('.timeline-toggle');
+  const isOpen = hl.classList.toggle('open');
+  toggle.textContent = isOpen ? '▲ Hide highlights' : '▼ Show highlights';
+}
+
+// ==========================================
+// GITHUB API
+// ==========================================
+let allRepos = []; // featured + github
+let langChartInstance = null;
+
+// Featured projects (always shown first)
+const FEATURED = [
+  {
+    id: 'featured-1',
+    name: 'PAAS — Multi-Tenant Loyalty & Rewards Platform',
+    description: 'Production multi-brand mobile app (Android + iOS) serving 4 KSA brands with QR scanning, wallet, marketplace, admin/warehouse panels, and real-time remote configuration.',
+    tech: 'Flutter · Dart 3 · Firebase · ObjectBox · GitHub Actions',
+    language: 'Dart',
+    languages: { 'Dart': 1, 'Flutter': 1 },
+    badges: ['featured', 'private'],
+    url: null,
+    homepage: null,
+    stars: 0,
+    forks: 0,
+    topics: ['flutter','dart','firebase','multi-tenant','loyalty','ci-cd'],
+    updated: null,
+    category: '📱 Flutter / Mobile',
+    featured: true,
+    isFeatured: true,
+  },
+  {
+    id: 'featured-2',
+    name: 'Chameleon CLI — Multi-Environment Developer Tooling',
+    description: 'Production CLI tool for multi-environment config orchestration with graceful API fallback. Released v2.0.0.',
+    tech: 'Node.js · TypeScript · Python · Shell',
+    language: 'TypeScript',
+    languages: { 'TypeScript': 1, 'Python': 1, 'Shell': 1 },
+    badges: ['featured'],
+    url: 'https://github.com/bolespolo4',
+    homepage: null,
+    stars: 0,
+    forks: 0,
+    topics: ['nodejs','typescript','cli','developer-tools'],
+    updated: null,
+    category: '🛠 Developer Tools',
+    featured: true,
+    isFeatured: true,
+  },
+  {
+    id: 'featured-3',
+    name: 'Model Generator — Flutter/Dart Utility',
+    description: 'Build-time code generation tool eliminating boilerplate and enforcing consistent data model patterns.',
+    tech: 'Flutter · Dart · build_runner',
+    language: 'Dart',
+    languages: { 'Dart': 1 },
+    badges: ['featured', 'open-source'],
+    url: 'https://github.com/bolespolo4/ModelGenerator',
+    homepage: null,
+    stars: 0,
+    forks: 0,
+    topics: ['flutter','dart','code-generation','build-runner'],
+    updated: null,
+    category: '📦 Packages / Libraries',
+    featured: true,
+    isFeatured: true,
+  },
+  {
+    id: 'featured-4',
+    name: 'Resources Generator — Flutter Utility',
+    description: 'Type-safe compile-time access to UI resources (colors, fonts, assets).',
+    tech: 'Flutter · Dart',
+    language: 'Dart',
+    languages: { 'Dart': 1 },
+    badges: ['featured', 'open-source'],
+    url: 'https://github.com/bolespolo4/ResourcesGenerator',
+    homepage: null,
+    stars: 0,
+    forks: 0,
+    topics: ['flutter','dart','resources','type-safe'],
+    updated: null,
+    category: '📦 Packages / Libraries',
+    featured: true,
+    isFeatured: true,
+  },
+  {
+    id: 'featured-5',
+    name: 'Electromerce — Cross-Platform E-Commerce App',
+    description: 'Full-featured cross-platform e-commerce app with cart, checkout, and backend API integration.',
+    tech: 'Flutter · Dart',
+    language: 'Dart',
+    languages: { 'Dart': 1 },
+    badges: ['featured', 'open-source'],
+    url: 'https://github.com/bolespolo4/electromerce',
+    homepage: null,
+    stars: 0,
+    forks: 0,
+    topics: ['flutter','dart','ecommerce','cross-platform'],
+    updated: null,
+    category: '📱 Flutter / Mobile',
+    featured: true,
+    isFeatured: true,
+  },
+];
+
+function getCache() {
+  try {
+    const raw = localStorage.getItem(CACHE_KEY);
+    if (!raw) return null;
+    const cached = JSON.parse(raw);
+    if (Date.now() - cached.timestamp > CACHE_TTL) return null;
+    return cached.data;
+  } catch { return null; }
+}
+
+function setCache(data) {
+  try {
+    localStorage.setItem(CACHE_KEY, JSON.stringify({ timestamp: Date.now(), data }));
+  } catch(e) {}
+}
+
+async function fetchJSON(url) {
+  const res = await fetch(url, {
+    headers: { 'Accept': 'application/vnd.github.v3+json' }
+  });
+  if (res.status === 403) {
+    const remaining = res.headers.get('X-RateLimit-Remaining');
+    if (remaining === '0') throw new Error('rate_limited');
+    throw new Error('access_denied');
+  }
+  if (!res.ok) throw new Error('fetch_error');
+  return res.json();
+}
+
+function formatDate(iso) {
+  if (!iso) return '';
+  const d = new Date(iso);
+  const now = new Date();
+  const diff = Math.floor((now - d) / 1000);
+  if (diff < 60) return 'just now';
+  if (diff < 3600) return Math.floor(diff/60) + ' min ago';
+  if (diff < 86400) return Math.floor(diff/3600) + ' hrs ago';
+  if (diff < 2592000) return Math.floor(diff/86400) + ' days ago';
+  if (diff < 31536000) return Math.floor(diff/2592000) + ' months ago';
+  return Math.floor(diff/31536000) + ' years ago';
+}
+
+function toTitleCase(str) {
+  return str.replace(/[-_]/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+}
+
+function categorize(repo) {
+  const name = (repo.name || '').toLowerCase();
+  const desc = (repo.description || '').toLowerCase();
+  const lang = (repo.language || '').toLowerCase();
+  const topics = (repo.topics || []).join(' ').toLowerCase();
+  const all = name + ' ' + desc + ' ' + lang + ' ' + topics;
+
+  if (all.match(/flutter|dart|mobile|ios|android/)) return '📱 Flutter / Mobile';
+  if (all.match(/cli|tool|generator|script|devtool|utility|boilerplate/)) return '🛠 Developer Tools';
+  if (all.match(/ai|ml|gpt|llm|openai|automation|bot|nlp|machine.?learning/)) return '🤖 AI / Automation';
+  if (all.match(/package|library|plugin|pub\.dev|sdk|widget/)) return '📦 Packages / Libraries';
+  if (all.match(/web|react|vue|angular|node|django|api|backend|frontend|fullstack|full.?stack|typescript|javascript/)) return '🌐 Web / Full-Stack';
+  return '🔧 Other';
+}
+
+function buildRepoCard(repo) {
+  const card = document.createElement('div');
+  card.className = 'project-card' + (repo.featured ? ' featured' : '');
+  card.dataset.cat = repo.category || '🔧 Other';
+  card.dataset.name = (repo.name || '').toLowerCase();
+  card.dataset.desc = (repo.description || '').toLowerCase();
+  card.dataset.topics = (repo.topics || []).join(' ').toLowerCase();
+
+  // Badges
+  const badges = (repo.badges || []);
+  let badgeHTML = '';
+  if (badges.includes('featured')) badgeHTML += '<span class="badge badge-featured">⭐ Featured</span>';
+  if (badges.includes('private')) badgeHTML += '<span class="badge badge-private">🔒 Private</span>';
+  if (badges.includes('open-source')) badgeHTML += '<span class="badge badge-open">✅ Open Source</span>';
+  const lang = repo.language || '';
+  if (lang === 'Dart' || lang === 'Flutter' || (repo.topics||[]).includes('flutter')) badgeHTML += '<span class="badge badge-flutter">Flutter</span>';
+  if (lang === 'Dart') badgeHTML += '<span class="badge badge-dart">Dart</span>';
+  if (lang === 'JavaScript' || lang === 'TypeScript' || lang === 'Node.js') badgeHTML += '<span class="badge badge-node">Node</span>';
+
+  // Language dots
+  const langs = repo.languages && Object.keys(repo.languages).length
+    ? Object.keys(repo.languages).slice(0,5)
+    : (repo.language ? [repo.language] : []);
+
+  const primaryLang = repo.language || (langs[0] || '');
+  const langDotColor = langColor(primaryLang);
+
+  let langTagsHTML = langs.map(l =>
+    `<span class="lang-tag">${l}</span>`
+  ).join('');
+
+  // Topics
+  let topicsHTML = (repo.topics || []).slice(0,6).map(t =>
+    `<span class="topic-tag">${t}</span>`
+  ).join('');
+
+  // Actions
+  let actionsHTML = '';
+  if (repo.url) {
+    actionsHTML += `<a href="${repo.url}" target="_blank" rel="noopener" class="btn btn-outline btn-sm">View on GitHub ↗</a>`;
+  }
+  if (repo.homepage) {
+    actionsHTML += `<a href="${repo.homepage}" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Live Demo ↗</a>`;
+  }
+  if (!repo.url && !repo.homepage) {
+    actionsHTML += `<span class="btn btn-outline btn-sm" style="opacity:0.5;cursor:default;">Private Project</span>`;
+  }
+
+  const displayName = repo.isFeatured ? repo.name : toTitleCase(repo.name || '');
+  const desc = repo.description || 'No description provided.';
+  const techLine = repo.tech ? `<div style="font-size:0.78rem;color:var(--highlight);margin-bottom:0.5rem;">${repo.tech}</div>` : '';
+  const starsHTML = repo.stars > 0 ? `<span>⭐ ${repo.stars}</span>` : '';
+  const forksHTML = repo.forks > 0 ? `<span>🍴 ${repo.forks}</span>` : '';
+  const updatedHTML = repo.updated ? `<span style="margin-left:auto;font-size:0.72rem;color:var(--muted)">Updated ${formatDate(repo.updated)}</span>` : '';
+
+  card.innerHTML = `
+    <div class="card-badges">${badgeHTML}</div>
+    <div class="card-name">${displayName}</div>
+    ${techLine}
+    <div class="card-desc">${desc}</div>
+    <div class="card-lang-row">
+      ${primaryLang ? `<span class="lang-dot" style="background:${langDotColor}"></span><span class="lang-name">${primaryLang}</span>` : ''}
+    </div>
+    <div class="lang-tags">${langTagsHTML}</div>
+    <div class="card-meta" style="margin-top:0.5rem;">
+      ${starsHTML}${forksHTML}${updatedHTML}
+    </div>
+    ${topicsHTML ? `<div class="card-topics">${topicsHTML}</div>` : ''}
+    <div class="card-actions">${actionsHTML}</div>
+  `;
+  return card;
+}
+
+async function loadGitHub() {
+  const grid = document.getElementById('projects-grid');
+
+  try {
+    // Try cache first
+    let ghData = getCache();
+
+    if (!ghData) {
+      // Fetch user info + repos
+      const [userInfo, repos] = await Promise.all([
+        fetchJSON(`${API_BASE}/users/${GH_USER}`),
+        fetchJSON(`${API_BASE}/users/${GH_USER}/repos?per_page=100&sort=updated`),
+      ]);
+
+      // Filter: no forks (unless 5+ stars), no profile readme
+      const filtered = repos.filter(r => {
+        if (r.name.toLowerCase() === GH_USER.toLowerCase()) return false;
+        if (r.fork && r.stargazers_count < 5) return false;
+        return true;
+      });
+
+      // Fetch languages for each repo (parallelized, max 10 at a time)
+      const langMap = {};
+      const chunks = [];
+      for (let i = 0; i < filtered.length; i += 10) chunks.push(filtered.slice(i, i+10));
+      for (const chunk of chunks) {
+        await Promise.all(chunk.map(async r => {
+          try {
+            const langs = await fetchJSON(`${API_BASE}/repos/${GH_USER}/${r.name}/languages`);
+            langMap[r.name] = langs;
+          } catch { langMap[r.name] = {}; }
+        }));
+      }
+
+      ghData = { userInfo, repos: filtered, langMap };
+      setCache(ghData);
+    }
+
+    const { userInfo, repos, langMap } = ghData;
+
+    // Build stats
+    let totalStars = 0, totalForks = 0;
+    const langCount = {};
+    repos.forEach(r => {
+      totalStars += r.stargazers_count || 0;
+      totalForks += r.forks_count || 0;
+      const l = r.language;
+      if (l) langCount[l] = (langCount[l] || 0) + 1;
+    });
+    const topLang = Object.entries(langCount).sort((a,b)=>b[1]-a[1])[0]?.[0] || '—';
+
+    document.getElementById('gh-stats-bar').innerHTML = `
+      <div class="gh-stat"><div class="gh-stat-value">${userInfo.public_repos || repos.length}</div><div class="gh-stat-label">Public Repos</div></div>
+      <div class="gh-stat"><div class="gh-stat-value">${totalStars}</div><div class="gh-stat-label">Total Stars</div></div>
+      <div class="gh-stat"><div class="gh-stat-value">${totalForks}</div><div class="gh-stat-label">Total Forks</div></div>
+      <div class="gh-stat"><div class="gh-stat-value" style="font-size:1.1rem">${topLang}</div><div class="gh-stat-label">Top Language</div></div>
+    `;
+
+    // Build language chart
+    const topLangs = Object.entries(langCount).sort((a,b)=>b[1]-a[1]).slice(0,8);
+    if (topLangs.length > 0) {
+      const chartCtx = document.getElementById('lang-chart').getContext('2d');
+      if (langChartInstance) langChartInstance.destroy();
+      langChartInstance = new Chart(chartCtx, {
+        type: 'doughnut',
+        data: {
+          labels: topLangs.map(x => x[0]),
+          datasets: [{
+            data: topLangs.map(x => x[1]),
+            backgroundColor: topLangs.map(x => langColor(x[0])),
+            borderColor: '#1E293B',
+            borderWidth: 3,
+          }]
+        },
+        options: {
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: '#94A3B8', padding: 16, font: { family: 'Inter', size: 12 } }
+            },
+            tooltip: {
+              callbacks: {
+                label: ctx => ` ${ctx.label}: ${ctx.parsed} repos`
+              }
+            }
+          },
+          cutout: '65%',
+        }
+      });
+    }
+
+    // Convert GitHub repos to our format
+    const ghRepos = repos.map(r => ({
+      id: r.id,
+      name: r.name,
+      description: r.description,
+      language: r.language,
+      languages: langMap[r.name] || {},
+      badges: r.private ? ['private'] : ['open-source'],
+      url: r.html_url,
+      homepage: r.homepage && r.homepage.startsWith('http') ? r.homepage : null,
+      stars: r.stargazers_count || 0,
+      forks: r.forks_count || 0,
+      topics: r.topics || [],
+      updated: r.updated_at,
+      category: categorize(r),
+      featured: false,
+      isFeatured: false,
+    }));
+
+    // Merge: featured first, then github (exclude repos already in featured by url match)
+    const featuredUrls = new Set(FEATURED.filter(f=>f.url).map(f=>f.url));
+    const filteredGH = ghRepos.filter(r => !featuredUrls.has(r.url));
+
+    allRepos = [...FEATURED, ...filteredGH];
+    renderGrid();
+
+  } catch (err) {
+    const isRateLimited = err.message === 'rate_limited';
+    const isAccessDenied = err.message === 'access_denied';
+    // Still show featured projects
+    allRepos = [...FEATURED];
+    renderGrid();
+
+    let icon = '⚠️', title = 'Could not load GitHub repositories', msg = 'Showing featured projects only. Check your connection and try again.';
+    if (isRateLimited) { icon = '⏳'; title = 'GitHub API rate limit reached'; msg = 'Please wait a moment and refresh the page.'; }
+    else if (isAccessDenied) { icon = '🔒'; title = 'GitHub API access denied'; msg = 'Showing featured projects only. This may be a temporary GitHub issue.'; }
+
+    grid.insertAdjacentHTML('beforeend', `
+      <div class="error-state" style="grid-column:1/-1;">
+        <div class="error-icon">${icon}</div>
+        <p style="font-weight:600;color:var(--text);margin-bottom:0.5rem;">${title}</p>
+        <p>${msg}</p>
+      </div>
+    `);
+  }
+}
+
+let activeCategory = 'All';
+let searchQuery = '';
+
+function renderGrid() {
+  const grid = document.getElementById('projects-grid');
+  grid.innerHTML = '';
+
+  const filtered = allRepos.filter(repo => {
+    const catMatch = activeCategory === 'All' || repo.category === activeCategory;
+    const q = searchQuery.toLowerCase();
+    const searchMatch = !q ||
+      (repo.name || '').toLowerCase().includes(q) ||
+      (repo.description || '').toLowerCase().includes(q) ||
+      (repo.topics || []).join(' ').toLowerCase().includes(q);
+    return catMatch && searchMatch;
+  });
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '<div class="empty-state"><div style="font-size:3rem;margin-bottom:1rem">🔍</div><p>No repositories found matching your search.</p></div>';
+    return;
+  }
+
+  filtered.forEach(repo => {
+    grid.appendChild(buildRepoCard(repo));
+  });
+}
+
+// Filter tabs
+document.getElementById('filter-tabs').addEventListener('click', e => {
+  const tab = e.target.closest('.filter-tab');
+  if (!tab) return;
+  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  tab.classList.add('active');
+  activeCategory = tab.dataset.cat;
+  renderGrid();
+});
+
+// Search
+document.getElementById('search-input').addEventListener('input', e => {
+  searchQuery = e.target.value;
+  renderGrid();
+});
+
+// ==========================================
+// CONTACT FORM
+// ==========================================
+function submitForm(e) {
+  e.preventDefault();
+  const name = document.getElementById('form-name').value;
+  const email = document.getElementById('form-email').value;
+  const subject = document.getElementById('form-subject').value;
+  const message = document.getElementById('form-message').value;
+  const mailto = `mailto:bolespolo4@gmail.com?subject=${encodeURIComponent(subject + ' — from ' + name)}&body=${encodeURIComponent('From: ' + name + '\nEmail: ' + email + '\n\n' + message)}`;
+  window.location.href = mailto;
+}
+
+// ==========================================
+// FOOTER YEAR
+// ==========================================
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// ==========================================
+// INIT
+// ==========================================
+loadGitHub();
+updateActiveNav();
+</script>
+
+<!--
+================================================================
+GITHUB PAGES DEPLOYMENT INSTRUCTIONS
+================================================================
+STEP 1: Create a new GitHub repo named exactly: bolespolo4.github.io
+STEP 2: Upload index.html to the root of the repo
+STEP 3: Go to repo Settings → Pages → Source: Deploy from branch →
+        main → / (root) → Save
+STEP 4: Wait 2 minutes → visit https://bolespolo4.github.io
+STEP 5: Every new repo you create on GitHub will auto-appear
+        on your portfolio within seconds (no code changes needed)
+================================================================
+-->
+</body>
+</html>
